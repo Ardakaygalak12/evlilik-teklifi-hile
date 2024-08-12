@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benimle Evlenir misin?</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #ffe6e6;
+        }
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #ff4d4d;
+            margin-bottom: 2rem;
+        }
+        .buttons {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 2rem;
+        }
+        button {
+            padding: 0.5rem 2rem;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        #evet {
+            background-color: #ff4d4d;
+            color: white;
+        }
+        #evet:hover {
+            background-color: #ff3333;
+        }
+        #hayir {
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        #hayir:hover {
+            background-color: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Benimle Evlenir misin, Aşkım?</h1>
+        <div class="buttons">
+            <button id="evet">Evet</button>
+            <button id="hayir">Hayır</button>
+        </div>
+    </div>
+
+    <script>
+        const hayirBtn = document.getElementById('hayir');
+        const evetBtn = document.getElementById('evet');
+
+        hayirBtn.addEventListener('mouseover', function() {
+            const containerRect = document.querySelector('.container').getBoundingClientRect();
+            const btnRect = hayirBtn.getBoundingClientRect();
+
+            const maxX = containerRect.width - btnRect.width;
+            const maxY = containerRect.height - btnRect.height;
+
+            const randomX = Math.floor(Math.random() * maxX);
+            const randomY = Math.floor(Math.random() * maxY);
+
+            hayirBtn.style.position = 'absolute';
+            hayirBtn.style.left = `${randomX}px`;
+            hayirBtn.style.top = `${randomY}px`;
+        });
+
+        evetBtn.addEventListener('click', function() {
+            alert('Harika! Seni seviyorum!');
+        });
+    </script>
+</body>
+</html>
